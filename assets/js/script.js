@@ -39,5 +39,19 @@ $(function () {
         })
     };
 
-             
+    // Saves the event on the App
+    function getEvent(){
+        $('.hour').each(function(){
+            var Hour = $(this).parent().attr('id');
+            var event = localStorage.getItem(Hour);
+            
+            if(event !== null){
+                $(this).siblings('.description').val(event);
+            }
+        })
+    }
+
+    //Function Calls
+    colorTime();
+    getEvent();            
 });
