@@ -13,6 +13,31 @@ $(function () {
         // Save text in local storage
         localStorage.setItem(eventTime, eventText);
     });
+                    
+    // Changes the time block depending on current time
+    function colorTime(){
+        
+        var currentHour = dayjs().hour();
+        
+        $('.time-block').each(function(){
+            var hour = parseInt($(this).attr('id'));
 
+            if (currentHour === hour) {
+                $(this).addClass('present');
+                $(this).removeClass('future');
+                $(this).removeClass('past');
+                
+            } else if (currentHour < hour){
+                $(this).addClass('future');
+                $(this).removeClass('present');
+                $(this).removeClass('past');
+            } else{
+                $(this).addClass('past');
+                $(this).removeClass('present');
+                $(this).removeClass('future');
+            }
+        })
+    };
 
+             
 });
